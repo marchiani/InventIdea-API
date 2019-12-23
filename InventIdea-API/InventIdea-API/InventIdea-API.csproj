@@ -5,6 +5,7 @@
     <RootNamespace>InventIdea_API</RootNamespace>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
 <<<<<<< Updated upstream
     <Folder Include="Новая папка\" />
@@ -35,5 +36,7 @@
 >>>>>>> Stashed changes
   </ItemGroup>
 
+=======
+>>>>>>> dev
 
 </Project>
