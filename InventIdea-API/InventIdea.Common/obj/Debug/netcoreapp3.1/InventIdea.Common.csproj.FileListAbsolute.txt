@@ -1,0 +1,4 @@
+C:\Users\dimab\OneDrive\Рабочий стол\Study\InventIdea\inventIdea-api\InventIdea-API\InventIdea.Common\bin\Debug\netcoreapp3.1\InventIdea.Common.exe
+C:\Users\dimab\OneDrive\Рабочий стол\Study\InventIdea\inventIdea-api\InventIdea-API\InventIdea.Common\obj\Debug\netcoreapp3.1\InventIdea.Common.csprojAssemblyReference.cache
+C:\Users\dimab\OneDrive\Рабочий стол\Study\InventIdea\inventIdea-api\InventIdea-API\InventIdea.Common\obj\Debug\netcoreapp3.1\InventIdea.Common.AssemblyInfoInputs.cache
+C:\Users\dimab\OneDrive\Рабочий стол\Study\InventIdea\inventIdea-api\InventIdea-API\InventIdea.Common\obj\Debug\netcoreapp3.1\InventIdea.Common.AssemblyInfo.cs
