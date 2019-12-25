@@ -5,11 +5,7 @@
     <RootNamespace>InventIdea_API</RootNamespace>
   </PropertyGroup>
 
-<<<<<<< HEAD
   <ItemGroup>
-<<<<<<< Updated upstream
-    <Folder Include="Новая папка\" />
-=======
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
@@ -33,10 +29,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Services\" />
     <Folder Include="EmailTemplates\" />
->>>>>>> Stashed changes
   </ItemGroup>
-
-=======
->>>>>>> dev
 
 </Project>
