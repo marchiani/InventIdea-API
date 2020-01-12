@@ -4,14 +4,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventIdea-API", "InventIdea-API\InventIdea-API.csproj", "{B033EE9A-1181-4B2E-9EFA-604642357FFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E21F020B-FE2C-4087-8163-693FDEE995DC} = {E21F020B-FE2C-4087-8163-693FDEE995DC}
+		{700D9B56-F943-4AC5-A025-A30EE221420B} = {700D9B56-F943-4AC5-A025-A30EE221420B}
+		{17C4466B-23E7-47A4-9962-43AAA8298A6B} = {17C4466B-23E7-47A4-9962-43AAA8298A6B}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventIdea.Services", "InventIdea.Services\InventIdea.Services.csproj", "{17C4466B-23E7-47A4-9962-43AAA8298A6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventIdea.Services", "InventIdea.Services\InventIdea.Services.csproj", "{17C4466B-23E7-47A4-9962-43AAA8298A6B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E21F020B-FE2C-4087-8163-693FDEE995DC} = {E21F020B-FE2C-4087-8163-693FDEE995DC}
+		{700D9B56-F943-4AC5-A025-A30EE221420B} = {700D9B56-F943-4AC5-A025-A30EE221420B}
+	EndProjectSection
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InventIdea.Database", "InventIdea.Database\InventIdea.Database.sqlproj", "{56282EE7-D507-4FBA-A3F9-15579CF5C495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventIdea.Data", "InventIdea.Data\InventIdea.Data.csproj", "{E21F020B-FE2C-4087-8163-693FDEE995DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventIdea.Data", "InventIdea.Data\InventIdea.Data.csproj", "{E21F020B-FE2C-4087-8163-693FDEE995DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventIdea.Common", "InventIdea.Common\InventIdea.Common.csproj", "{700D9B56-F943-4AC5-A025-A30EE221420B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventIdea.Common", "InventIdea.Common\InventIdea.Common.csproj", "{700D9B56-F943-4AC5-A025-A30EE221420B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E21F020B-FE2C-4087-8163-693FDEE995DC} = {E21F020B-FE2C-4087-8163-693FDEE995DC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

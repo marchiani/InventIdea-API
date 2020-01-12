@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace InventIdea_API
 {
@@ -25,27 +21,57 @@ namespace InventIdea_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(x =>
+                {
+
+                });
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.ConstraintMap.Add("ESwoiGlobalEnum", typeof(int));
+            });
+
+            services.Configure<MvcOptions>(options =>
+            {
+                //options.Filters.Add<TokenAuthentivarionFilter>();
+            });
+
+            services.AddAutoMapper(typeof(Program));
+
+            //TODO When you will know Quartz
+            //services.AddHostedService<QuartzHostedService>();
+
+            //services.AddScoped(CreateInventIdeaEntities);
+
+            //TODO Add sevice and implemintation
+            //services.AddTransient<ICompanyUserService, CompanyUser>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseCors("AllowAll");
 
-            app.UseAuthorization();
+            app.UseMvc();
 
-            app.UseEndpoints(endpoints =>
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                endpoints.MapControllers();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "InventIdea API V1");
             });
         }
+
     }
 }
