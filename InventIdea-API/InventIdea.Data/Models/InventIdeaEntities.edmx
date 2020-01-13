@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище InvenIdea.Database" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище InvenIdeaDatabaseContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InvenIdea.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventIdeaEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Posts" EntityType="InvenIdea.Database.Posts" />
+          <EntitySet Name="Users" EntityType="InvenIdea.Database.Users" />
+          <AssociationSet Name="CreatedByUserAndCreatedUsers" Association="InvenIdea.Database.CreatedByUserAndCreatedUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="DeletedUsersAndDeletedByUser" Association="InvenIdea.Database.DeletedUsersAndDeletedByUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UpdatedUsersAndUpdatedByUser" Association="InvenIdea.Database.UpdatedUsersAndUpdatedByUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Subtitle" Type="String" Nullable="false" />
+          <Property Name="Tags" Type="String" Nullable="false" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Guid" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Guid" />
+          <Property Name="Categories" Type="String" Nullable="false" />
+          <Property Name="Posttext" Type="String" Nullable="false" />
+          <Property Name="PostsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AccessToken" Type="Guid" Nullable="false" />
+          <Property Name="AccessTokenFrom" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmEmailToken" Type="Guid" />
+          <Property Name="ConfirmEmailTokenFrom" Type="DateTime" Precision="3" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Guid" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Guid" />
+          <Property Name="ResetPasswordToken" Type="Guid" />
+          <Property Name="ResetPasswordTokenFrom" Type="DateTime" Precision="3" />
+          <Property Name="SystemRoleId" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeEmailToken" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeEmailTokenFrom" Type="DateTime" Precision="3" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CreatedByUser" Relationship="InvenIdea.Database.CreatedByUserAndCreatedUsers" FromRole="Users" ToRole="Users1" />
+          <NavigationProperty Name="CreatedUsers" Relationship="InvenIdea.Database.CreatedByUserAndCreatedUsers" FromRole="Users1" ToRole="Users" />
+          <NavigationProperty Name="DeletedByUser" Relationship="InvenIdea.Database.DeletedUsersAndDeletedByUser" FromRole="Users" ToRole="Users1" />
+          <NavigationProperty Name="DeletedUsers" Relationship="InvenIdea.Database.DeletedUsersAndDeletedByUser" FromRole="Users1" ToRole="Users" />
+          <NavigationProperty Name="UpdatedByUser" Relationship="InvenIdea.Database.UpdatedUsersAndUpdatedByUser" FromRole="Users" ToRole="Users1" />
+          <NavigationProperty Name="UpdatedUsers" Relationship="InvenIdea.Database.UpdatedUsersAndUpdatedByUser" FromRole="Users1" ToRole="Users" />
+          </EntityType>
+        <Association Name="CreatedByUserAndCreatedUsers">
+          <End Type="InvenIdea.Database.Users" Role="Users" Multiplicity="1" />
+          <End Type="InvenIdea.Database.Users" Role="Users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeletedUsersAndDeletedByUser">
+          <End Type="InvenIdea.Database.Users" Role="Users" Multiplicity="1" />
+          <End Type="InvenIdea.Database.Users" Role="Users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UpdatedUsersAndUpdatedByUser">
+          <End Type="InvenIdea.Database.Users" Role="Users" Multiplicity="1" />
+          <End Type="InvenIdea.Database.Users" Role="Users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище InvenIdeaDatabaseContainer" CdmEntityContainer="InventIdeaEntities" />
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
